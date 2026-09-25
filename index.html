@@ -150,20 +150,12 @@
 
         .btn-action-balance {
             border: none;
-            padding: 5px 8px 5px 10px;
+            padding: 4px 8px;
             border-radius: 5px;
-            font-weight: 700;
-            font-size: 10px;
+            font-weight: bold;
+            font-size: 11px;
             cursor: pointer;
             color: #fff;
-            text-align: left;
-            width: 100%;
-            height: 26px;
-            display: flex;
-            align-items: center;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
         
         .btn-burgundy-unified {
@@ -767,6 +759,32 @@
             font-size: 11px;
             text-transform: uppercase;
         }
+
+        /* Индикаторы подсказок: черная точка на самом краю чёрного шара (в зоне светлого блика) и ярко-красная на красном */
+        .hint-dot-edge-black {
+            position: absolute;
+            top: 3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background-color: #000000;
+            border-radius: 50%;
+            box-shadow: 0 0 2px rgba(255,255,255,0.7);
+            z-index: 10;
+        }
+        .hint-dot-bright-red {
+            position: absolute;
+            top: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 5px;
+            background-color: #ff1a1a;
+            border-radius: 50%;
+            box-shadow: 0 0 3px rgba(255,26,26,0.9);
+            z-index: 10;
+        }
     </style>
 </head>
 <body onclick="initAudioContextOnInteraction()">
@@ -790,8 +808,7 @@
                     <button class="lang-btn" id="lang-en-btn" onclick="setLanguage('en')">EN</button>
                 </div>
             </div>
-            <div style="display: flex; align-items: center; gap: 6px;">
-                <span id="user-display" style="color: #f1c40f; font-size: 12px; font-weight: bold;"></span>
+            <div style="display: flex; align-items: center; gap: 4px;">
                 <span id="tr-balance-label">Баланс:</span> <span id="balance-val">1000.00 USDT</span>
             </div>
         </div>
@@ -815,16 +832,16 @@
             <div class="middle-content-layout">
                 <div class="tracker-col">
                     <div class="left-actions-panel">
-                        <button class="btn-action-balance btn-burgundy-unified" onclick="customRegister()" data-tr="reg">📝 Регистрация</button>
-                        <button class="btn-action-balance btn-burgundy-unified" id="btn-deposit" onclick="customDeposit()" disabled title="Недоступно в демо-режиме" data-tr="dep">💳 Пополнить</button>
-                        <button class="btn-action-balance btn-burgundy-unified" id="btn-withdraw" onclick="customWithdraw()" disabled title="Недоступно в демо-режиме" data-tr="with">💸 Вывод</button>
-                        <button class="btn-action-balance btn-mode btn-burgundy-unified" id="btn-real-mode" onclick="setGameMode('real')" data-tr="real">💵 Реальные деньги</button>
-                        <button class="btn-action-balance btn-mode btn-burgundy-unified active" id="btn-demo-mode" onclick="setGameMode('demo')" data-tr="demo">🎮 Демо-режим</button>
-                        <button class="btn-action-balance btn-burgundy-unified" onclick="openReferralModal()" data-tr="ref">👥 Рефералы</button>
-                        <button class="btn-action-balance btn-burgundy-unified" onclick="openSupportModal()" data-tr="sup">🛠️ Техподдержка</button>
-                        <button class="btn-action-balance btn-burgundy-unified" onclick="openRulesModal()" data-tr="rules">📜 Правила игры</button>
-                        <button class="btn-action-balance btn-burgundy-unified" onclick="openHistoryModal()" data-tr="hist">📊 История игры</button>
-                        <button class="btn-action-balance btn-burgundy-unified" onclick="openSettingsModal()" data-tr="sett">⚙️ Настройки</button>
+                        <button class="btn-action-balance btn-burgundy-unified" onclick="customRegister()" style="width: 100%; padding: 4px; font-size: 9.5px;" data-tr="reg">📝 Регистрация</button>
+                        <button class="btn-action-balance btn-burgundy-unified" id="btn-deposit" onclick="customDeposit()" style="width: 100%; padding: 4px; font-size: 9.5px;" disabled title="Недоступно в демо-режиме" data-tr="dep">💳 Пополнить</button>
+                        <button class="btn-action-balance btn-burgundy-unified" id="btn-withdraw" onclick="customWithdraw()" style="width: 100%; padding: 4px; font-size: 9.5px;" disabled title="Недоступно в демо-режиме" data-tr="with">💸 Вывод</button>
+                        <button class="btn-action-balance btn-mode btn-burgundy-unified" id="btn-real-mode" onclick="setGameMode('real')" style="width: 100%; padding: 4px; font-size: 9.5px;" data-tr="real">💵 Реальные деньги</button>
+                        <button class="btn-action-balance btn-mode btn-burgundy-unified active" id="btn-demo-mode" onclick="setGameMode('demo')" style="width: 100%; padding: 4px; font-size: 9.5px;" data-tr="demo">🎮 Демо-режим</button>
+                        <button class="btn-action-balance btn-burgundy-unified" onclick="openReferralModal()" style="width: 100%; padding: 4px; font-size: 9.5px;" data-tr="ref">👥 Рефералы</button>
+                        <button class="btn-action-balance btn-burgundy-unified" onclick="openSupportModal()" style="width: 100%; padding: 4px; font-size: 9.5px;" data-tr="sup">🛠️ Техподдержка</button>
+                        <button class="btn-action-balance btn-burgundy-unified" onclick="openRulesModal()" style="width: 100%; padding: 4px; font-size: 9.5px;" data-tr="rules">📜 Правила игры</button>
+                        <button class="btn-action-balance btn-burgundy-unified" onclick="openHistoryModal()" style="width: 100%; padding: 4px; font-size: 9.5px;" data-tr="hist">📊 История игры</button>
+                        <button class="btn-action-balance btn-burgundy-unified" onclick="openSettingsModal()" style="width: 100%; padding: 4px; font-size: 9.5px;" data-tr="sett">⚙️ Настройки</button>
 
                         <div class="recent-winners-sidebar" id="winners-sidebar-box">
                             <div class="winners-sidebar-title" id="tr-winners-title">Последние победители, 15 победителей</div>
@@ -1635,54 +1652,7 @@
         let demoSpinCounter = 0;
         let demoForcedWinSpins = [];
 
-        let currentLogin = null;
-
-        async function syncUserWithServer(login, password) {
-            try {
-                const response = await fetch('http://localhost:3000/api/register', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ login, password })
-                });
-                const data = await response.json();
-                if (data.success && data.user) {
-                    currentLogin = data.user.login;
-                    realMoneyBalance = data.user.balance;
-                    realMoneyInitial = data.user.balance;
-                    
-                    localStorage.setItem('roulette_user_login', currentLogin);
-                    document.getElementById('user-display').innerText = `👤 ${currentLogin}`;
-
-                    if (currentGameMode === 'real') {
-                        balance = realMoneyBalance;
-                        initialBalance = realMoneyInitial;
-                        updateUI();
-                    }
-                }
-            } catch (e) {
-                console.error('Ошибка связи с сервером:', e);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedLogin = localStorage.getItem('roulette_user_login');
-            if (savedLogin) {
-                syncUserWithServer(savedLogin, 'autologin');
-            }
-        });
-
-        async function updateBalanceOnServer() {
-            if (!currentLogin || currentGameMode === 'demo') return;
-            try {
-                await fetch('http://localhost:3000/api/update-balance', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ login: currentLogin, balance: realMoneyBalance })
-                });
-            } catch (e) {
-                console.error('Ошибка сохранения баланса на сервере:', e);
-            }
-        }
+        let nextPrecomputedWinNum = null;
 
         function initDemoBlock() {
             demoSpinCounter = 0;
@@ -1829,10 +1799,27 @@
             return slots;
         }
 
+        function determineNextWinningNumber() {
+            if (currentGameMode === 'demo') {
+                let currentStepInBlock = demoSpinCounter % 10;
+                if (demoForcedWinSpins.includes(currentStepInBlock)) {
+                    return getWinningNumberForDemo();
+                } else {
+                    return WHEEL_NUMS[Math.floor(Math.random() * WHEEL_NUMS.length)];
+                }
+            } else {
+                return WHEEL_NUMS[Math.floor(Math.random() * WHEEL_NUMS.length)];
+            }
+        }
+
         function createScatterBalls() {
             scatterField.innerHTML = '';
             ballElements = [];
             const slots = getCasinoGridSlotPositions();
+
+            if (nextPrecomputedWinNum === null) {
+                nextPrecomputedWinNum = determineNextWinningNumber();
+            }
 
             slots.forEach(slot => {
                 const num = slot.num;
@@ -1849,8 +1836,19 @@
                 cell.style.fontSize = '15px';
                 cell.style.left = `${slot.x}px`;
                 cell.style.top = `${slot.y}px`;
+                
+                let dotHtml = '';
+                if (num === nextPrecomputedWinNum) {
+                    if (isRed) {
+                        dotHtml = `<div class="hint-dot-bright-red" title="Подсказка"></div>`;
+                    } else {
+                        dotHtml = `<div class="hint-dot-edge-black" title="Подсказка"></div>`;
+                    }
+                }
+
                 cell.innerHTML = `
                     ${num}
+                    ${dotHtml}
                     ${misses >= 100 ? `<span style="position:absolute; bottom:-3px; font-size:7px; font-weight:900; background:#000; color:#ffeb3b; padding:0 2px; border-radius:3px; border:1px solid #ffeb3b; z-index:5;">${misses}</span>` : ''}
                     <span class="bet-badge" id="badge-num_${num}">0</span>
                 `;
@@ -2039,6 +2037,9 @@
                 btnWithdraw.disabled = false;
                 document.getElementById('status').innerText = currentLang === 'ru' ? "Включен режим Реальных денег" : "Real money mode enabled";
             }
+            
+            nextPrecomputedWinNum = null;
+            createScatterBalls();
             updateUI();
         }
 
@@ -2103,15 +2104,9 @@
             closeSupportModal();
         }
 
-        async function submitRegistration() {
+        function submitRegistration() {
             const login = document.getElementById('regLogin').value.trim();
-            const password = document.getElementById('regPass').value.trim();
-            if (!login) { 
-                showCustomAlert('alert11'); 
-                return; 
-            }
-            
-            await syncUserWithServer(login, password);
+            if (!login) { showCustomAlert('alert11'); return; }
             showCustomAlert(currentLang === 'ru' ? `Регистрация успешна! Добро пожаловать, ${login}.` : `Registration successful! Welcome, ${login}.`);
             closeRegisterModal();
         }
@@ -2141,8 +2136,6 @@
                 if (!isNaN(amount) && amount > 0 && amount <= balance) {
                     balance -= amount;
                     initialBalance = Math.max(0, initialBalance - amount);
-                    realMoneyBalance = balance;
-                    updateBalanceOnServer();
                     updateUI();
                     showCustomAlert(currentLang === 'ru' ? `Успешно выведено ${formatMoney(amount)}!` : `Successfully withdrawn ${formatMoney(amount)}!`);
                 }
@@ -2332,8 +2325,19 @@
                 if (misses >= 100) cellClass += ' sun-glowing-ball';
 
                 b.element.className = cellClass;
+                
+                let dotHtml = '';
+                if (nextPrecomputedWinNum !== null && b.num === nextPrecomputedWinNum) {
+                    if (isRed) {
+                        dotHtml = `<div class="hint-dot-bright-red" title="Подсказка"></div>`;
+                    } else {
+                        dotHtml = `<div class="hint-dot-edge-black" title="Подсказка"></div>`;
+                    }
+                }
+
                 b.element.innerHTML = `
                     ${b.num}
+                    ${dotHtml}
                     ${misses >= 100 ? `<span style="position:absolute; bottom:-3px; font-size:7px; font-weight:900; background:#000; color:#ffeb3b; padding:0 2px; border-radius:3px; border:1px solid #ffeb3b; z-index:5;">${misses}</span>` : ''}
                     <span class="bet-badge" id="badge-num_${b.num}">0</span>
                 `;
@@ -2515,20 +2519,9 @@
             const isFast = document.getElementById('fast-spin-chk').checked;
             const spinDuration = isFast ? 1500 : 7000;
 
-            let winNumber;
-            if (currentGameMode === 'demo') {
-                let currentStepInBlock = demoSpinCounter % 10;
-                if (demoForcedWinSpins.includes(currentStepInBlock)) {
-                    winNumber = getWinningNumberForDemo();
-                } else {
-                    winNumber = WHEEL_NUMS[Math.floor(Math.random() * WHEEL_NUMS.length)];
-                }
-                demoSpinCounter++;
-                if (demoSpinCounter >= 10) {
-                    initDemoBlock();
-                }
-            } else {
-                winNumber = WHEEL_NUMS[Math.floor(Math.random() * WHEEL_NUMS.length)];
+            let winNumber = nextPrecomputedWinNum;
+            if (winNumber === null) {
+                winNumber = determineNextWinningNumber();
             }
 
             const startBalanceBeforeSpin = balance + totalBetAmount;
@@ -2543,13 +2536,11 @@
                 shuffleBallGroups();
                 triggerWinnersSidebar();
 
+                nextPrecomputedWinNum = determineNextWinningNumber();
+                updateAllMissVisuals();
+
                 isSpinning = false;
                 setButtonsDisabled(false);
-
-                if (currentGameMode === 'real') {
-                    realMoneyBalance = balance;
-                    updateBalanceOnServer();
-                }
 
                 if (isAutoSpin) {
                     flatSpinsRemaining--;
